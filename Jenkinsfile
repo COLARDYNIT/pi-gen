@@ -1,5 +1,6 @@
 stage('build image'){
 	node {
-    	sh "./build.sh"
+    	checkout scm
+	sh "./build.sh"
     }
 }
