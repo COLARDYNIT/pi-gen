@@ -1,6 +1,6 @@
 stage('build image'){
 	node {
     	checkout scm
-	sh "./build.sh"
+	sh "sudo ./build.sh"
     }
 }
