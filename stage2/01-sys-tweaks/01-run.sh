@@ -39,4 +39,9 @@ usermod --pass='*' root
 curl -sSL https://get.docker.com | sh
 EOF
 
+on_chroot << EOF
+docker pull mitchese/rpi3-mariadb
+docker pull colardynit/logocontrolpi
+EOF
+
 rm -f ${ROOTFS_DIR}/etc/ssh/ssh_host_*_key*
