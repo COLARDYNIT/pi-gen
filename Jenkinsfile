@@ -1,6 +1,7 @@
 stage('build image'){
 	node {
-    	checkout scm
+    	deleteDir();
+	checkout scm
 	sh "sudo ./build.sh"
 	archiveArtifacts 'work/*-dockerpi/export-image/*.img'
     }
