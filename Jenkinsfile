@@ -1,8 +1,8 @@
 stage('input network'){
 node {
-    input id: 'input' ,message: 'Please enter the network credentials', parameters: [string(defaultValue: '', description: '', name: 'Network'), password(defaultValue: '', description: '', name: 'Password')]
-    ${NETWORK} = input['Network']
-    ${PASSWORD} = input['Password']
+    input id: 'creds' ,message: 'Please enter the network credentials', parameters: [string(defaultValue: '', description: '', name: 'Network'), password(defaultValue: '', description: '', name: 'Password')]
+    NETWORK= creds['Network']
+    PASSWORD= creds['Password']
     }
 }
 
