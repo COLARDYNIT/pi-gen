@@ -43,7 +43,7 @@ EOF
 on_chroot << EOF
 usermod --pass='*' root
 curl -sSL https://get.docker.com | sh
-sudo apt-get update && sudo apt-get install oracle-java8-jdk
+yes | sudo apt-get update && sudo apt-get install oracle-java8-jdk
 EOF
 
 rm -f ${ROOTFS_DIR}/etc/ssh/ssh_host_*_key*
