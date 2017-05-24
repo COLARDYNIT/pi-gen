@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-sleep 5m
+sleep 2m
 echo starting docker
 echo making sure no duplicate containers are running
 docker rm -f $(docker ps -a -q)
@@ -9,3 +9,6 @@ echo started docker
 echo starting logocontrol
 docker run --restart=always -p 8088:8088 -v /home/pi/app/logocontrol:/var/lib/logocontrol colardynit/logocontrolpi
 echo started logocontrol
+echo starting logopihipster
+java -jar /home/pi/app/logopihipsterv-2-0.0.1-SNAPSHOT.war
+echo started logopihipster
