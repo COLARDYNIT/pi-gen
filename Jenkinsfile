@@ -3,7 +3,7 @@ stage('build app'){
 		dir('app') {
 		    	mvnHome = tool 'M3'
 		    	JAVA_HOME = tool 'java 8'
-		    	checkout([$class: GitSCM, source: 'https://github.com/COLARDYNIT/hwbotadmin.git'])
+		    	git branch: 'master', url: 'git@github.com:COLARDYNIT/hwbotadmin.git'
 		    	sh "'${mvnHome}/bin/mvn' clean compile -Pci -Dmaven.test.skip"
 		}
     }
