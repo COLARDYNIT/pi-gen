@@ -1,7 +1,6 @@
 #!/bin/bash -e
-mkdir ${ROOTFS_DIR}/home/pi/app
-mkdir ${ROOTFS_DIR}/home/pi/app/logocontrol
-mkdir ${ROOTFS_DIR}/home/pi/app/mysql
+mkdir -p ${ROOTFS_DIR}/home/pi/app/logocontrol
+mkdir -p ${ROOTFS_DIR}/home/pi/app/mysql
 install -m 755 -c files/docker.sh   			${ROOTFS_DIR}/home/pi/app/
 install -m 755 -c files/logopihipsterv-2-0.0.1-SNAPSHOT.war   			${ROOTFS_DIR}/home/pi/app/
 install -m 644 files/regenerate_ssh_host_keys.service	${ROOTFS_DIR}/lib/systemd/system/
