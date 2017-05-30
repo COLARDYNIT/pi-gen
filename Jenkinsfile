@@ -1,6 +1,6 @@
 stage('build app'){
 	node {
-	def userInput = input(
+	input(
 	 id: userInput ,
 	 message: 'project to run on pi?',
 	 ok: 'submit',
