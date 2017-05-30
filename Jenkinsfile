@@ -10,6 +10,7 @@ stage('build app'){
 		    	JAVA_HOME = tool 'java 8'
 		    	git branch: 'v2', url: 'git@github.com:COLARDYNIT/' + repository + '.git'
 		    	sh "'${mvnHome}/bin/mvn' clean compile -Pci -Dmaven.test.skip"
+		    	sh "mv app/**/target/*.war work/*-dockerpi/stage2/01-sys-tweaks/files/"
 		}
     }
 }

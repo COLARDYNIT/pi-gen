@@ -10,5 +10,5 @@ echo starting logocontrol
 docker run --restart=always -p 8088:8088 -v /home/pi/app/logocontrol:/var/lib/logocontrol colardynit/logocontrolpi
 echo started logocontrol
 echo starting logopihipster
-java -jar /home/pi/app/logopihipsterv-2-0.0.1-SNAPSHOT.war
+java -jar /home/pi/app/*.war
 echo started logopihipster
