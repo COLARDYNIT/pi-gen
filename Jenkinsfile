@@ -1,7 +1,6 @@
 stage('build app'){
 	node {
 	input(
-	 id: userInput ,
 	 message: 'project to run on pi?',
 	 ok: 'submit',
 	 parameters: [string(defaultValue: '', description: '', name: 'repository')]
@@ -9,7 +8,7 @@ stage('build app'){
 		dir('app') {
 		    	mvnHome = tool 'M3'
 		    	JAVA_HOME = tool 'java 8'
-		    	git branch: 'master', url: 'git@github.com:COLARDYNIT/' + userInput + '.git'
+		    	git branch: 'master', url: 'git@github.com:COLARDYNIT/' + input + '.git'
 		    	sh "'${mvnHome}/bin/mvn' clean compile -Pci -Dmaven.test.skip"
 		}
     }
