@@ -3,7 +3,7 @@ stage('build app'){
 	input(
 	 message: 'project to run on pi?',
 	 ok: 'submit',
-	 parameters: [$class: 'TextParameterDefinition',string(defaultValue: '', description: '', name: 'repository')]
+	 parameters: [class: 'TextParameterDefinition',string(defaultValue: '', description: '', name: 'repository')]
 	 )
 		dir('app') {
 		    	mvnHome = tool 'M3'
