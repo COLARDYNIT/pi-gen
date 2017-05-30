@@ -1,9 +1,15 @@
 stage('build app'){
 	node {
+	def userInput = input(
+	 id: userInput ,
+	 message: 'project to run on pi?',
+	 ok: 'submit',
+	 parameters: [string(defaultValue: '', description: '', name: 'repository')]
+	 )
 		dir('app') {
 		    	mvnHome = tool 'M3'
 		    	JAVA_HOME = tool 'java 8'
-		    	git branch: 'master', url: 'git@github.com:COLARDYNIT/hwbotadmin.git'
+		    	git branch: 'master', url: 'git@github.com:COLARDYNIT/' + userInput + '.git'
 		    	sh "'${mvnHome}/bin/mvn' clean compile -Pci -Dmaven.test.skip"
 		}
     }
