@@ -13,7 +13,7 @@ stage('build app'){
 		    	sh "'${mvnHome}/bin/mvn' package -Pprod -Dmaven.test.skip"
 		}
 
-		sh "mv target/*.war work/*-dockerpi/stage2/01-sys-tweaks/files/"
+		sh "mv app/**/target/*.war work/*-dockerpi/stage2/01-sys-tweaks/files/"
     }
 }
 stage('build image'){
