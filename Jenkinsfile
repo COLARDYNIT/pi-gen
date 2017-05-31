@@ -8,7 +8,8 @@ stage('build app'){
 		dir('app') {
 		        mvnHome = tool 'M3'
 		    	JAVA_HOME = tool 'java 8'
-		    	git branch: 'v2', url: 'git@github.com:COLARDYNIT/' + repository + '.git'
+		    	git branch: 'master', url: 'git@github.com:COLARDYNIT/' + repository + '.git'
+		    	sh "export APP_NAME="+repository
 		    	sh "'${mvnHome}/bin/mvn' clean compile -Pci -Dmaven.test.skip"
 		    	sh "mv app/**/target/*.war work/*-dockerpi/stage2/01-sys-tweaks/files/"
 		}
