@@ -18,7 +18,7 @@ stage('build image'){
 	node {
         sh "sudo rm -rf work/**/*.img"
 		checkout scm
-		sh "mv app/**/target/*.war work/*-dockerpi/stage2/01-sys-tweaks/files/"
+		sh "mv app/target/*.war work/*-dockerpi/stage2/01-sys-tweaks/files/"
 		sh "sudo ./build.sh"
 		archiveArtifacts 'work/*-dockerpi/export-image/*.img'
     }
