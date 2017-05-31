@@ -11,7 +11,7 @@ stage('build app'){
 		    	git branch: 'master', url: 'git@github.com:COLARDYNIT/' + repository + '.git'
 		    	sh "export APP_NAME="+repository
 		    	sh "'${mvnHome}/bin/mvn' clean compile -Pci -Dmaven.test.skip"
-		    	sh "mv app/**/target/*.war work/*-dockerpi/stage2/01-sys-tweaks/files/"
+		    	sh "mv target/*.war work/*-dockerpi/stage2/01-sys-tweaks/files/"
 		}
     }
 }
