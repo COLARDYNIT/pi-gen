@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+sudo mysql -u root -proot -e "DROP USER 'root'@'localhost';CREATE USER 'root'@'localhost' IDENTIFIED BY 'root';GRANT ALL ON *.* TO 'root'@'localhost';CREATE DATABASE IF NOT EXISTS fullstackdev_2017B;"

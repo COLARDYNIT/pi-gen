@@ -2,6 +2,7 @@
 mkdir -p ${ROOTFS_DIR}/home/pi/app/logocontrol
 mkdir -p ${ROOTFS_DIR}/home/pi/app/mysql
 install -m 755 -c files/docker.sh   			${ROOTFS_DIR}/home/pi/app/
+install -m 755 -c files/dbsetup.sh   			${ROOTFS_DIR}/home/pi/app/
 mv files/*.war   			${ROOTFS_DIR}/home/pi/app/
 install -m 644 files/regenerate_ssh_host_keys.service	${ROOTFS_DIR}/lib/systemd/system/
 install -m 755 files/apply_noobs_os_config		${ROOTFS_DIR}/etc/init.d/
