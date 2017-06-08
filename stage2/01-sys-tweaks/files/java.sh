@@ -7,4 +7,4 @@ while [  $DB_UP -ne 0 ]; do
    sleep .5
 done
 echo DB UP!
-java -jar /home/pi/app/*.war &> /home/pi/app/logs/app.log
+java -jar /home/pi/app/*.war
