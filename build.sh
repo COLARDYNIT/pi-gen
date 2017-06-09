@@ -122,7 +122,7 @@ fi
 if [ -f config ]; then
 	source config
 fi
-
+IMG_NAME='dockerpi'
 if [ -z "${IMG_NAME}" ]; then
 	echo "IMG_NAME not set" 1>&2
 	exit 1
