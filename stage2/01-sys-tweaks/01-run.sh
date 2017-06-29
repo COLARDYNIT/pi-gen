@@ -1,23 +1,13 @@
 #!/bin/bash -e
-mkdir -p ${ROOTFS_DIR}/home/pi/app/logocontrol
-mkdir -p ${ROOTFS_DIR}/home/pi/app/mysql
-mkdir -p ${ROOTFS_DIR}/home/pi/app/logs
-install -m 755 -c files/docker.sh   			${ROOTFS_DIR}/home/pi/app/
-install -m 755 -c files/dbsetup.sh   			${ROOTFS_DIR}/home/pi/app/
-install -m 755 -c files/java.sh   			${ROOTFS_DIR}/home/pi/app/
-touch ${ROOTFS_DIR}/home/pi/app/logs/app.log
-mv files/*.war   			${ROOTFS_DIR}/home/pi/app/
+mv files/*.jar   			${ROOTFS_DIR}/home/pi/
+mv files/plclogo.cfg   			${ROOTFS_DIR}/home/pi/
 install -m 644 files/regenerate_ssh_host_keys.service	${ROOTFS_DIR}/lib/systemd/system/
 install -m 755 files/apply_noobs_os_config		${ROOTFS_DIR}/etc/init.d/
 install -m 755 files/resize2fs_once			${ROOTFS_DIR}/etc/init.d/
-
 install -d						${ROOTFS_DIR}/etc/systemd/system/rc-local.service.d
 install -m 644 files/ttyoutput.conf			${ROOTFS_DIR}/etc/systemd/system/rc-local.service.d/
-
 install -m 644 files/50raspi				${ROOTFS_DIR}/etc/apt/apt.conf.d/
-
 install -m 644 files/console-setup   			${ROOTFS_DIR}/etc/default/
-install -m 644 -c files/crontab   			${ROOTFS_DIR}/etc/
 
 
 on_chroot << EOF
@@ -46,9 +36,21 @@ EOF
 on_chroot << EOF
 usermod --pass='*' root
 sudo chown -R pi:pi /home/pi
-curl -sSL https://get.docker.com | sh
 yes | sudo apt-get update
+yes | sudo apt-get upgrade
 yes | sudo apt-get install oracle-java8-jdk
+yes | sudo apt-get install screen mc vim git htop
+yes | sudo apt-get install sshpass
+yes | wget -qO - 'https://bintray.com/user/downloadSubjectPublicKey?username=openhab' | sudo apt-key add -
+yes | sudo apt-get install apt-transport-https
+yes | echo 'deb https://dl.bintray.com/openhab/apt-repo2 stable main' | sudo tee /etc/apt/sources.list.d/openhab2.list
+yes | sudo apt-get update
+yes | sudo apt-get install openhab2
+yes | sudo systemctl daemon-reload
+yes | sudo systemctl enable openhab2.service
+sshpass -p habopen ssh -p8101 openhab@localhost < feature:install openhab-runtime-compat1x
+sudo mv /home/pi/*.jar /usr/share/openhab2/addons
+sudo mv /home/pi/plclogo.cfg /etc/openhab2/services
 EOF
 
 rm -f ${ROOTFS_DIR}/etc/ssh/ssh_host_*_key*
