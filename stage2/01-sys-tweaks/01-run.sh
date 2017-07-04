@@ -41,6 +41,7 @@ yes | sudo apt-get upgrade
 yes | sudo apt-get install oracle-java8-jdk
 yes | sudo apt-get install screen mc vim git htop
 yes | sudo apt-get install sshpass
+yes | sudo apt-get install libnss-mdns
 yes | wget -qO - 'https://bintray.com/user/downloadSubjectPublicKey?username=openhab' | sudo apt-key add -
 yes | sudo apt-get install apt-transport-https
 yes | echo 'deb https://dl.bintray.com/openhab/apt-repo2 stable main' | sudo tee /etc/apt/sources.list.d/openhab2.list
