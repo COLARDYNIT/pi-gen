@@ -1,5 +1,6 @@
 #!/bin/bash -e
-mv files/*.jar   			${ROOTFS_DIR}/home/pi/
+mv files/org.openhab.binding.plclogo-1.10.0-SNAPSHOT.jar  			${ROOTFS_DIR}/home/pi/
+mv files/logopi-generator-0.0.1-SNAPSHOT.jar  			${ROOTFS_DIR}/home/pi/
 mv files/plclogo.cfg   			${ROOTFS_DIR}/home/pi/
 install -m 644 files/regenerate_ssh_host_keys.service	${ROOTFS_DIR}/lib/systemd/system/
 install -m 755 files/apply_noobs_os_config		${ROOTFS_DIR}/etc/init.d/
@@ -50,7 +51,7 @@ yes | sudo apt-get install openhab2
 yes | sudo systemctl daemon-reload
 yes | sudo systemctl enable openhab2.service
 sshpass -p habopen ssh -p8101 openhab@localhost < feature:install openhab-runtime-compat1x
-sudo mv /home/pi/*.jar /usr/share/openhab2/addons
+sudo mv /home/pi/org.openhab.binding.plclogo-1.10.0-SNAPSHOT.jar /usr/share/openhab2/addons
 sudo mv /home/pi/plclogo.cfg /etc/openhab2/services
 EOF
 
