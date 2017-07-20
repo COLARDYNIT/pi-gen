@@ -1,6 +1,5 @@
 #!/bin/bash -e
 mv files/org.openhab.binding.plclogo-1.10.0-SNAPSHOT.jar  			${ROOTFS_DIR}/home/pi/
-mv files/logopi-generator-0.0.1-SNAPSHOT.jar  			${ROOTFS_DIR}/home/pi/
 mv files/plclogo.cfg   			${ROOTFS_DIR}/home/pi/
 install -m 644 files/regenerate_ssh_host_keys.service	${ROOTFS_DIR}/lib/systemd/system/
 install -m 755 files/apply_noobs_os_config		${ROOTFS_DIR}/etc/init.d/
